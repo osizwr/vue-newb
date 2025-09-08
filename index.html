@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Basics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <nav id="navLinks" class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a href="" class="navbar-brand">{{ navTitle }}</a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li v-for="(link, index) in navbar" class="nav-item" :key="index">
+                        <a :href="link.url" class="nav-link" aria-current="page">{{ link.text }}</a>
+                    </li>
+                </ul>
+        </div>
+    </nav>
+    <div id="content" class="container">
+        <h1>{{ pageTitle }}</h1>
+        <p>{{ pageContent }}</p>
+    </div>
+
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    navTitle: 'My Domain',
+                    navbar: [
+                        {text: 'Home', url: '#home'},
+                        {text: 'Projects', url: '#projects'},
+                        {text: 'Contact', url: '#contact'},
+                        {text: 'Links', url: '#links'}
+                    ],
+                    pageTitle: "Hello, I'm Marvin!",
+                    pageContent: "Welcome to my domain."
+                };
+            }
+        }).mount('body');
+    </script>
+</body>
+</html>
